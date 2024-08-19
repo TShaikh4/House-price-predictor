@@ -29,11 +29,11 @@ print(df.head())
 # 4  3.8462      52.0  6.281853   1.081081       565.0  2.181467     37.85    -122.25  3.422
 
 # check for missing values: all returned 0 so i'm assuming it's a full dataset (makes sense since this is a training dataset from Sckit-Learn)
-print(df.isnull().sum())
+# print(df.isnull().sum())
 
 # visualizing the data;just opened a bunch of plot graphs, not really useful atp
-sns.pairplot(df)
-plt.show()
+# sns.pairplot(df)
+# plt.show()
 
 # splitting the data into training and testing sets
 X = df.drop('Price', axis=1)
@@ -52,14 +52,16 @@ mse = mean_squared_error(y_test, y_pred)
 print(f'Mean Squared Error: {mse}')
 
 # visualizing actuall vs predicted prices
-plt.scatter(y_test, y_pred)
-plt.xlabel('Actual Prices')
-plt.ylabel('Predicted Prices')
-plt.title('Actual vs Predicted Prices')
-plt.show()
+# plt.scatter(y_test, y_pred)
+# plt.xlabel('Actual Prices')
+# plt.ylabel('Predicted Prices')
+# plt.title('Actual vs Predicted Prices')
+# plt.show()
 
-# using the model to make predictions; Predicted Price: [4.15194306] (90% within range of the actual price for these metrics, not bad)
-new_data = np.array([[8.3252, 41, 6.984127, 1.02381, 322, 2.555556, 37.88, -122.23]])
+# using the model to make predictions; 
+# Predicted Price: [4.15194306] (8.3% off of the actual price for these metrics, not bad (House #0 in the dataset))
+# Predicted Price: [2.41257139] (29.5% off of the actual price for these metrics, not a great second number (House #1 in the dataset))
+new_data = np.array([[3.8462, 53, 6.281853, 1.081081, 565, 2.181467, 37.85, -122.25]])
 predicted_price = model.predict(new_data)
 print(f'Predicted Price: {predicted_price}')
 
